@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Assistant&display=swap");
+
+* {
+  @apply font-sans text-base;
+}
+
+ul a {
+  @apply mt-5 mx-3 text-sm border-b border-black hover:border-b-2;
+}

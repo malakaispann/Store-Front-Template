@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Grant action access to repo
         uses: actions/checkout@v3
-      - name: Get Node JS v16.11.27
+      - name: Get Node JS v16.11
         uses: actions/setup-node@v3
         with:
           node-version: '16.11'

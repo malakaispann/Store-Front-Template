@@ -1,5 +1,5 @@
 import React from 'react';
-import { gitLogo } from '../assets/assets';
+import {default as gitLogo} from '../assets/github-logo.png';
 
 function Footer() {
   return (

@@ -16,7 +16,7 @@ jobs:
       - name: Get Node JS v16.11.27
         uses: actions/setup-node@v3
         with:
-          node-version: '16.11.27'
+          node-version: '16.11'
       - name: Install Dependencies
         run : npm ci
       - name: Build Application

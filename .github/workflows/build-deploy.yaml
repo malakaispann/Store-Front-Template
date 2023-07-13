@@ -1,0 +1,57 @@
+# Builds and deploys the application to Github pages
+name: Build and Deploy
+on: 
+  push:
+    - master
+
+jobs: 
+
+  build:
+    name: Build React Application
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Grant action access to repo
+        uses: actions/checkout@v3
+      - name: Get Node JS v16.11.27
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.11.27'
+      - name: Install Dependencies
+        run : npm ci
+      - name: Build Application
+        run: npm run build
+      - name: Fix permissions of Build
+        run: |
+          chmod -c -R +rX "_site/" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v2
+
+  deploy:
+    name: Deploy Application to Pages
+
+    # build app before trying to deploy.
+    needs: build
+    
+    # grant access to repo resources.
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Deploy App to Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+    
+    
+
+        
+        
+

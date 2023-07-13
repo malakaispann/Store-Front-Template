@@ -9,5 +9,5 @@
 }
 
 ul a {
-  @apply mt-5 mx-3 text-sm border-b border-black hover:border-b-2;
+  @apply mt-5 mx-3 border-b border-black hover:border-b-2;
 }

@@ -3,7 +3,7 @@ import {ArrowRightIcon} from '@heroicons/react/outline'
 
 const WelcomeBanner = () => {
   return (
-    <a href="https://github.com/KayyDVC/Store-Front-Template" >
+    <a href="https://github.com/KayDVC/Store-Front-Template" >
       <div className='bg-zinc-100 w-screen h-10 drop-shadow-lg flex items-center border-b border-zinc-200 hover:bg-zinc-200 justify-center group mb-4'>
           
           <div className='flex items-center text-xs tracking-widest'>

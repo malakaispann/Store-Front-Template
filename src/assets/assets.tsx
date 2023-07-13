@@ -1,0 +1,1 @@
+export { default as gitLogo} from './github-logo.png';

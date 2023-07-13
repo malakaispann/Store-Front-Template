@@ -21,13 +21,10 @@ jobs:
         run : npm ci
       - name: Build Application
         run: npm run build
-      - name: Fix permissions of Build
-        run: |
-          chmod -c -R +rX "_site/" | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v2
+        with:
+          path: build
 
   deploy:
     name: Deploy Application to Pages

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
 import { SearchIcon, MenuIcon, UserIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
 

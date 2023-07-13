@@ -1,6 +1,7 @@
 {
   "name": "Store Front Template",
-  "version": "0.1.0",
+  "version": "1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@heroicons/react": "^1.0.6",

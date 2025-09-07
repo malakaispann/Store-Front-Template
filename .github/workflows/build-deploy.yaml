@@ -1,55 +1,39 @@
 # Builds and deploys the application to Github pages
 name: Build and Deploy
-on: 
-  push:
-    branches:
-      - master
+on:
+    push:
+        branches:
+            - master
+jobs:
+    build:
+        name: Build React Application
+        runs-on: ubuntu-22.04
+        steps:
+            - name: Grant action access to repo
+              uses: actions/checkout@v4
+            - name: Get Node JS v16
+              uses: actions/setup-node@v5
+              with:
+                  node-version: "16.11"
+            - name: Install Dependencies
+              run: npm ci
+            - name: Build Application
+              run: npm run build
+            - name: Upload Artifacts
+              uses: actions/upload-pages-artifact@v4
+              with:
+                  path: build
 
-jobs: 
+    deploy:
+        name: Deploy Application to Pages
 
-  build:
-    name: Build React Application
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Grant action access to repo
-        uses: actions/checkout@v3
-      - name: Get Node JS v16.11
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.11'
-      - name: Install Dependencies
-        run : npm ci
-      - name: Build Application
-        run: npm run build
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: build
-
-  deploy:
-    name: Deploy Application to Pages
-
-    # build app before trying to deploy.
-    needs: build
-    
-    # grant access to repo resources.
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{steps.deployment.outputs.page_url}}
-
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Deploy App to Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
-
-    
-    
-
-        
-        
-
+        # build app before trying to deploy.
+        needs: build
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4

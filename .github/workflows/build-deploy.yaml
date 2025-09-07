@@ -27,6 +27,11 @@ jobs:
     deploy:
         name: Deploy Application to Pages
 
+        # grant access to repo resources.
+        permissions:
+            pages: write
+            id-token: write
+
         # build app before trying to deploy.
         needs: build
         environment:
